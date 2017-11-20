@@ -45,26 +45,7 @@ public class SelectElementByType
             case "repeater": return ByAngular.repeater(access_name);
             case "model": return ByAngular.model(access_name);
             default : return null;
-
         }
-		/*if(type.equals("id"))
-			return By.id(access_name);
-		else if (type.equals("name"))
-			return By.name(access_name);
-		else if (type.equals("class"))
-			return By.className(access_name);
-		else if (type.equals("xpath"))
-			return By.xpath(access_name);
-		else if (type.equals("css"))
-			return By.cssSelector(access_name);
-		else if(type.equals("linkText"))
-			return By.linkText(access_name);
-		else if(type.equals("partialLinkText"))
-			return By.partialLinkText(access_name);
-		else if(type.equals("tagName"))
-			return By.tagName(access_name);
-		else
-			return null;*/
     }
 }
 

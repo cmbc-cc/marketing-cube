@@ -473,8 +473,8 @@ public class PredefinedStepDefinitions implements BaseTest {
             File srcFile = ts.getScreenshotAs(OutputType.FILE);
             try {
                 ScenarioImpl impl = (ScenarioImpl) scenario;
-				/*Collection<String> tags = impl.getSourceTagNames();
-				String name = "Scenario";
+                /*Collection<String> tags = impl.getSourceTagNames();
+                String name = "Scenario";
 				for (String t : tags) {
 				name += "_" + t;
 				}
@@ -490,12 +490,12 @@ public class PredefinedStepDefinitions implements BaseTest {
     }
 
     @Before
-    public final void initiallize() { }
+    public final void initiallize() {
+        DriverUtil.cleanCookies();
+    }
 
     @After
     public final void tearDown() {
-//        if (counter == 0) {
-//            DriverUtil.closeDriver();
-//        }
+//      DriverUtil.closeDriver();
     }
 }

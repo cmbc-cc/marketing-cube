@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.seleniumhq.selenium.fluent.FluentWebDriver;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 /**
  * Created by tom on 24/02/17.
@@ -88,6 +90,7 @@ public class DriverUtil {
      */
     private static WebDriver chooseDriver(DesiredCapabilities capabilities) {
         String preferredDriver = System.getProperty("browser", "Firefox");
+        String preferredDevice = System.getProperty("device", "iPhone 6");
         boolean headless = System.getProperty("Headless", "true").equals("true");
 
         switch (preferredDriver.toLowerCase()) {
@@ -96,10 +99,14 @@ public class DriverUtil {
                 if (headless) {
                     chromeOptions.addArguments("--headless");
                 }
-                capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-                System.out.println("********************* before driver created");
-                ChromeDriver driver = new ChromeDriver();
-                System.out.println("********************* after driver created");
+//                capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
+                Map<String, String> mobileEmulation = new HashMap<>();
+                mobileEmulation.put("deviceName", preferredDevice);
+
+//                chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+
+                ChromeDriver driver = new ChromeDriver(chromeOptions);
                 ErrorHandler handler = new ErrorHandler();
                 handler.setIncludeServerErrors(false);
                 driver.setErrorHandler(handler);
@@ -135,6 +142,12 @@ public class DriverUtil {
             } catch (NoSuchSessionException nsse) { // in case close fails
             } catch (SessionNotCreatedException snce) {} // in case close fails
             driver = null;
+        }
+    }
+
+    public static void cleanCookies() {
+        if (driver != null) {
+                driver.manage().deleteAllCookies();
         }
     }
 }

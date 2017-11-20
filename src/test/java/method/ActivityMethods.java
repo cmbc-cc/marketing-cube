@@ -19,7 +19,7 @@ public class ActivityMethods extends SelectElementByType implements BaseTest {
     }
 
     /**
-     * method to check activity presence
+     * method to check activity presence with title
      *
      * @param accessName : String : Activity title
      * @param testCase   : Boolean : test case [true or false]
@@ -41,7 +41,7 @@ public class ActivityMethods extends SelectElementByType implements BaseTest {
     }
 
     /**
-     * method to check activity presence
+     * method to click activity
      *
      * @param accessName : String : Activity title
      */
@@ -61,7 +61,7 @@ public class ActivityMethods extends SelectElementByType implements BaseTest {
     }
 
     /**
-     * method to check gift presence
+     * method to check gift presence with remark
      *
      * @param accessName : String : Gift remark
      * @param testCase   : Boolean : test case [true or false]

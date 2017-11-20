@@ -6,7 +6,7 @@ public class MiscMethods
 {
     public boolean valid_locator_type(String type)
 	{
-		return Arrays.asList("id","class","css","name","xpath").contains(type);
+		return Arrays.asList("id","class","css","name","xpath","binding").contains(type);
 	}
 
 	/** Method to verify locator type
