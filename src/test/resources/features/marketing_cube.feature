@@ -14,7 +14,7 @@
     那么 activity having title "民生爱奇艺联名卡 首刷专享特权" should be present
     并且 activity having title "民生白条联名卡 五星级自助餐二免一畅享" should be present
     当 I click on activity having title "嗨购11.11"
-#   那么 element having binding "title" should have text as "很遗憾，您暂时没有嗨购双11礼券的资质"
+    那么 element having class "top_txt" should have text as "很遗憾，您暂时没有嗨购双11礼券的资质"
     并且 gift having remark "进入大众点评APP购买美食团购/闪惠买单时使用。" should be present
     并且 gift having remark "进入大众点评APP订座电影票时使用。" should be present
     并且 gift having remark "进入大众点评APP购买美食团购/闪惠买单时使用。" should have button as "立即兑换"

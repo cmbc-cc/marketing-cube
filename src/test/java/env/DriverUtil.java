@@ -89,9 +89,9 @@ public class DriverUtil {
      * @return
      */
     private static WebDriver chooseDriver(DesiredCapabilities capabilities) {
-        String preferredDriver = System.getProperty("browser", "Firefox");
+        String preferredDriver = System.getProperty("browser", "chrome");
         String preferredDevice = System.getProperty("device", "iPhone 6");
-        boolean headless = System.getProperty("Headless", "true").equals("true");
+        boolean headless = System.getProperty("Headless", "false").equals("true");
 
         switch (preferredDriver.toLowerCase()) {
             case "chrome":
