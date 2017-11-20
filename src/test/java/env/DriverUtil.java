@@ -66,6 +66,19 @@ public class DriverUtil {
         return fluentWebDriver;
     }
 
+
+    private static Thread CLOSE_DRIVER = new Thread() {
+        @Override
+        public void run() {
+            closeDriver();
+        }
+
+    };
+
+    static {
+        Runtime.getRuntime().addShutdownHook(CLOSE_DRIVER);
+    }
+
     /**
      * By default to web driver will be PhantomJS
      *

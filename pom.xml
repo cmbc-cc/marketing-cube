@@ -132,7 +132,6 @@
             </goals>
             <configuration>
               <projectName>ExecutionAutomation</projectName>
-              <outputDirectory>${project.build.directory}/cucumber-Html-Report</outputDirectory>
               <cucumberOutput>${project.build.directory}/cucumber-json-report.json</cucumberOutput>
             </configuration>
           </execution>

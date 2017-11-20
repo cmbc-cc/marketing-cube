@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class PredefinedStepDefinitions implements BaseTest {
-    private static int counter = 0;
     protected WebDriver driver = DriverUtil.getDefaultDriver();
     //Navigation Steps
 
@@ -333,7 +332,7 @@ public class PredefinedStepDefinitions implements BaseTest {
 
     // step to select option from mutliselect dropdown list
     /*@Then("^I select all options from multiselect dropdown having (.+) \"(.*?)\"$")
-	public void select_all_option_from_multiselect_dropdown(String type,String accessName) throws Exception
+    public void select_all_option_from_multiselect_dropdown(String type,String accessName) throws Exception
 	{
 	miscmethod.validateLocator(type);
 	//inputObj.
@@ -491,19 +490,12 @@ public class PredefinedStepDefinitions implements BaseTest {
     }
 
     @Before
-    public final void initiallize() {
-        synchronized (this) {
-            counter++;
-        }
-    }
+    public final void initiallize() { }
 
     @After
     public final void tearDown() {
-        synchronized (this) {
-            counter--;
-        }
-        if (counter == 0) {
-            DriverUtil.closeDriver();
-        }
+//        if (counter == 0) {
+//            DriverUtil.closeDriver();
+//        }
     }
 }
