@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.html5.LocalStorage;
+import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.ErrorHandler;
@@ -16,6 +18,7 @@ import org.seleniumhq.selenium.fluent.FluentWebDriver;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 /**
  * Created by tom on 24/02/17.
  */
@@ -24,6 +27,17 @@ public class DriverUtil {
     protected static WebDriver driver;
     protected static FluentWebDriver fluentWebDriver;
     protected static NgWebDriver ngWebDriver;
+    private static Thread CLOSE_DRIVER = new Thread() {
+        @Override
+        public void run() {
+            closeDriver();
+        }
+
+    };
+
+    static {
+        Runtime.getRuntime().addShutdownHook(CLOSE_DRIVER);
+    }
 
     public static WebDriver getDefaultDriver() {
         if (driver != null) {
@@ -68,23 +82,11 @@ public class DriverUtil {
         return fluentWebDriver;
     }
 
-
-    private static Thread CLOSE_DRIVER = new Thread() {
-        @Override
-        public void run() {
-            closeDriver();
-        }
-
-    };
-
-    static {
-        Runtime.getRuntime().addShutdownHook(CLOSE_DRIVER);
-    }
-
     /**
      * By default to web driver will be PhantomJS
-     *
+     * <p>
      * Override it by passing -DWebDriver=Chrome to the command line arguments
+     *
      * @param capabilities
      * @return
      */
@@ -140,14 +142,22 @@ public class DriverUtil {
                 driver.quit(); // fails in current geckodriver! TODO: Fixme
             } catch (NoSuchMethodError nsme) { // in case quit fails
             } catch (NoSuchSessionException nsse) { // in case close fails
-            } catch (SessionNotCreatedException snce) {} // in case close fails
+            } catch (SessionNotCreatedException snce) {
+            } // in case close fails
             driver = null;
         }
     }
 
     public static void cleanCookies() {
         if (driver != null) {
-                driver.manage().deleteAllCookies();
+            driver.manage().deleteAllCookies();
+        }
+    }
+
+    public static void clearStorage() {
+        if (driver != null) {
+            WebStorage webStorage = (WebStorage) driver;
+            webStorage.getLocalStorage().clear();
         }
     }
 }
