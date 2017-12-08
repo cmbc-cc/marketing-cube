@@ -1,23 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
+                //run your build
+                sh '/usr/local/bin/mvn clean verify'
             }
             post {
                 always {
-                  junit 'target/surefire-reports/*.xml'
+                    //generate cucumber reports
+                    cucumber '**/*.json'
                 }
             }
         }

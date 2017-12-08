@@ -495,8 +495,6 @@ public class PredefinedStepDefinitions implements BaseTest {
     @After
     public final void tearDown() {
       DriverUtil.cleanCookies();
-      System.out.println("******before clear storage *********");
       DriverUtil.clearStorage();
-      System.out.println("******after clear storage *********");
     }
 }
