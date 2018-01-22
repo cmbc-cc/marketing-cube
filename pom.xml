@@ -88,6 +88,7 @@
       <artifactId>fluent-selenium</artifactId>
       <version>RELEASE</version>
     </dependency>
+
   </dependencies>
 
   <build>

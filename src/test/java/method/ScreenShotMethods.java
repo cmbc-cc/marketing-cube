@@ -39,5 +39,5 @@ public class ScreenShotMethods implements BaseTest {
 		System.out.println(dateFormat.format(cal.getTime()));*/
 	}
 	 /* cur_time = Time.now.strftime('%Y%m%d%H%M%S%L')
-	  $driver.save_screenshot('./features/screenshots/screenshot' + cur_time + '.png')*/
+	  $driver.save_screenshot('./features1/screenshots/screenshot' + cur_time + '.png')*/
 }

@@ -88,6 +88,7 @@ public class ActivityMethods extends SelectElementByType implements BaseTest {
      * @param accessName : String : gift remark
      */
     public void click_gift(String accessName) {
+        ngWebDriver.waitForAngularRequestsToFinish();
         fluentWebDriver.divs(ByAngular.repeater("item in prodList")).first(new GiftContainsTerm(accessName, "item.remark")).getWebElement().click();
     }
 

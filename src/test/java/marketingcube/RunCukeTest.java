@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 //			{"pretty", "html:target/cucumberHtmlReport"},
 //			{"html:target/cucumberHtmlReport"},     //  for html result
 			{"json:target/cucumber-json-report.json"},  // for json result
-		features = "classpath:features",
+		features = "classpath:features3",
 		glue = {
 				"stepdefinition"  // predefined and user defined step definitions package
 			   }

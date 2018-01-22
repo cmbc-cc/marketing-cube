@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.seleniumhq.selenium.fluent.FluentWebDriver;
 
-import java.awt.image.DirectColorModel;
-
 public class SelectElementByType
 {
     protected WebDriver driver;
